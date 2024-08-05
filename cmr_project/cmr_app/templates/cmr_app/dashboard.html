@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>File</th>
+            <th>Uploaded At</th>
+        </tr>
+        {% for cmr in cmrs %}
+        <tr>
+            <td>{{ cmr.id }}</td>
+            <td>{{ cmr.user.username }}</td>
+            <td><a href="{{ cmr.file.url }}">Download</a></td>
+            <td>{{ cmr.uploaded_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
