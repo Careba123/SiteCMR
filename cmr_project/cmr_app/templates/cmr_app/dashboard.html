@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Panou</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <h1>Panou</h1>
     <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <button type="submit">Logout</button>
@@ -13,8 +13,8 @@
         <tr>
             <th>ID</th>
             <th>User</th>
-            <th>File</th>
-            <th>Uploaded At</th>
+            <th>Fisier</th>
+            <th>Incarcat la</th>
         </tr>
         {% for cmr in cmrs %}
         <tr>
