@@ -11,7 +11,7 @@ def upload_cmr(request):
             cmr = form.save(commit=False)
             cmr.user = request.user
             cmr.save()
-            return redirect('dashboard')
+            return redirect('cmr_app:dashboard')
     else:
         form = CMRForm()
     return render(request, 'cmr_app/upload_cmr.html', {'form': form})
