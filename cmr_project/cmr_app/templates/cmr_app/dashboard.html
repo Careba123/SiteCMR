@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Panou de control</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'cmr_app/styles.css' %}">
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <h1>Panou de control</h1>
     <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <button type="submit">Logout</button>
@@ -17,8 +17,8 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>Username</th>
-                <th>Actions</th>
+                <th>User</th>
+                <th>Actiuni</th>
             </tr>
             {% for user in users %}
             <tr>
@@ -33,8 +33,8 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>File</th>
-                <th>Uploaded At</th>
+                <th>Fisier</th>
+                <th>Incarcat la</th>
             </tr>
             {% for cmr in cmrs %}
             <tr>
