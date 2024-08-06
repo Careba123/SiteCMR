@@ -3,6 +3,7 @@
 <head>
     <title>Documentele Utilizatorului</title>
     {% load static %}
+    {% load custom_filters %}
     <link rel="stylesheet" type="text/css" href="{% static 'cmr_app/styles.css' %}">
 </head>
 <body>
@@ -16,7 +17,7 @@
         {% for document in documents %}
         <tr>
             <td>{{ document.id }}</td>
-            <td><a href="{{ document.file.url }}">{{ document.file.name }}</a></td>
+            <td><a href="{{ document.file.url }}">{{ document.file.name|basename }}</a></td>
             <td>{{ document.uploaded_at }}</td>
         </tr>
         {% endfor %}
