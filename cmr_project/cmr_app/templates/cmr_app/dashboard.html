@@ -7,30 +7,50 @@
 </head>
 <body>
     <h1>Dashboard</h1>
-    {% if user.is_staff %}
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+    {% if request.user.is_staff %}
         <h2>Utilizatori</h2>
-        <ul>
-            {% for u in users %}
-                <li><a href="{% url 'cmr_app:user_documents' u.id %}">{{ u.username }}</a></li>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Actions</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td><a href="{% url 'cmr_app:user_documents' user.id %}"><button>Vezi documentele</button></a></td>
+            </tr>
             {% endfor %}
-        </ul>
+        </table>
+    {% else %}
+        <h2>Documentele Mele</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>File</th>
+                <th>Uploaded At</th>
+            </tr>
+            {% for cmr in cmrs %}
+            <tr>
+                <td>{{ cmr.id }}</td>
+                <td><a href="{{ cmr.file.url }}">Download</a></td>
+                <td>{{ cmr.uploaded_at }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     {% endif %}
-    <h2>Documentele Mele</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Fisier</th>
-            <th>Incarcat la</th>
-        </tr>
-        {% for cmr in cmrs %}
-        <tr>
-            <td>{{ cmr.id }}</td>
-            <td><a href="{{ cmr.file.url }}">{{ cmr.file.name|slice:"5:" }}</a></td>
-            <td>{{ cmr.uploaded_at }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="{% url 'cmr_app:upload_cmr' %}">Incarca CMR</a>
-    <a href="{% url 'logout' %}">Logout</a>
+
+    <h2>Upload Document</h2>
+    <form method="post" action="{% url 'cmr_app:upload_cmr' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
 </body>
 </html>

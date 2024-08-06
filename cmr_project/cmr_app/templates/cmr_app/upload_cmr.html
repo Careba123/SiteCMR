@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Încarcă CMR</title>
+    <title>Incarca CMR</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'cmr_app/styles.css' %}">
 </head>
 <body>
-    <h1>Încarcă CMR</h1>
+    <h1>Incarca CMR</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Upload</button>
     </form>
-    <a href="{% url 'cmr_app:dashboard' %}">Înapoi la Dashboard</a>
 </body>
 </html>
