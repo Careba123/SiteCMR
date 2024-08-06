@@ -3,7 +3,6 @@
 <head>
     <title>Dashboard</title>
     {% load static %}
-    {% load custom_filters %}
     <link rel="stylesheet" type="text/css" href="{% static 'cmr_app/styles.css' %}">
 </head>
 <body>
@@ -26,7 +25,7 @@
         {% for cmr in cmrs %}
         <tr>
             <td>{{ cmr.id }}</td>
-            <td><a href="{{ cmr.file.url }}">{{ cmr.file.name|basename }}</a></td>
+            <td><a href="{{ cmr.file.url }}">{{ cmr.file.name|slice:"5:" }}</a></td>
             <td>{{ cmr.uploaded_at }}</td>
         </tr>
         {% endfor %}
