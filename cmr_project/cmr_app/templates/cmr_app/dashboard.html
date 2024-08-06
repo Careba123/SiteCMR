@@ -36,4 +36,19 @@
             </tr>
             {% for cmr in cmrs %}
             <tr>
-                <td>{{ cmr.id }}</
+                <td>{{ cmr.id }}</td>
+                <td><a href="{{ cmr.file.url }}">Download</a></td>
+                <td>{{ cmr.uploaded_at }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <h2>Upload Document</h2>
+    <form method="post" action="{% url 'cmr_app:upload_cmr' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
