@@ -39,7 +39,7 @@
             {% for cmr in cmrs %}
             <tr>
                 <td>{{ cmr.id }}</td>
-                <td><a href="{{ cmr.file.url }}">Download</a></td>
+                <td><a href="{{ cmr.file.url }}">{{ cmr.file.name|slice:"5:" }}</a></td> <!-- Folosim slice pentru a elimina 'cmrs/' din nume -->
                 <td>{{ cmr.uploaded_at }}</td>
             </tr>
             {% endfor %}

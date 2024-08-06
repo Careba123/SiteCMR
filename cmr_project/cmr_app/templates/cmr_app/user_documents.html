@@ -16,7 +16,7 @@
         {% for document in documents %}
         <tr>
             <td>{{ document.id }}</td>
-            <td><a href="{{ document.file.url }}">Download</a></td>
+            <td><a href="{{ document.file.url }}">{{ document.file.name|slice:"5:" }}</a></td> <!-- Folosim slice pentru a elimina 'cmrs/' din nume -->
             <td>{{ document.uploaded_at }}</td>
         </tr>
         {% endfor %}
