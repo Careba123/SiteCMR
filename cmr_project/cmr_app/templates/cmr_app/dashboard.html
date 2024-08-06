@@ -20,7 +20,7 @@
         <tr>
             <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
-            <td><a href="{% url 'myapp:user_documents' user.id %}"><button>Vezi documentele</button></a></td>
+            <td><a href="{% url 'cmr_app:user_documents' user.id %}"><button>Vezi documentele</button></a></td>
         </tr>
         {% endfor %}
     </table>
