@@ -1,36 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Documentele Utilizatorului</title>
     {% load static %}
+    {% load custom_filters %}
     <link rel="stylesheet" type="text/css" href="{% static 'cmr_app/styles.css' %}">
 </head>
 <body>
-    <h1>Dashboard</h1>
-    {% if user.is_staff %}
-        <h2>Utilizatori</h2>
-        <ul>
-            {% for u in users %}
-                <li><a href="{% url 'cmr_app:user_documents' u.id %}">{{ u.username }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <h2>Documentele Mele</h2>
+    <h1>Documentele încărcate de {{ user.username }}</h1>
     <table>
         <tr>
             <th>ID</th>
             <th>Fisier</th>
             <th>Incarcat la</th>
         </tr>
-        {% for cmr in cmrs %}
+        {% for document in documents %}
         <tr>
-            <td>{{ cmr.id }}</td>
-            <td><a href="{{ cmr.file.url }}">{{ cmr.file.name }}</a></td>
-            <td>{{ cmr.uploaded_at }}</td>
+            <td>{{ document.id }}</td>
+            <td><a href="{{ document.file.url }}">{{ document.file.name|basename }}</a></td>
+            <td>{{ document.uploaded_at }}</td>
         </tr>
         {% endfor %}
     </table>
-    <a href="{% url 'cmr_app:upload_cmr' %}">Incarca CMR</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'cmr_app:dashboard' %}">Înapoi la Dashboard</a>
 </body>
 </html>
