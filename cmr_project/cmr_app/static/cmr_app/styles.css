@@ -39,16 +39,19 @@ th {
     color: white;
 }
 
-button {
+button, .button {
     background-color: #4CAF50;
     color: white;
     border: none;
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
-button:hover {
+button:hover, .button:hover {
     background-color: #45a049;
 }
 
@@ -86,7 +89,7 @@ input[type="file"] {
         padding: 15px;
     }
 
-    button {
+    button, .button {
         width: 100%;
         padding: 15px;
         margin: 5px 0;
@@ -118,7 +121,7 @@ input[type="file"] {
         padding: 10px;
     }
 
-    button {
+    button, .button {
         width: 100%;
         padding: 10px;
         margin: 5px 0;
