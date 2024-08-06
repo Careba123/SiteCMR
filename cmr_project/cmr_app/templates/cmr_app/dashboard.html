@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Panou</title>
+    <title>Dashboard</title>
 </head>
 <body>
-    <h1>Panou</h1>
+    <h1>Dashboard</h1>
     <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <button type="submit">Logout</button>
     </form>
+    <h2>Utilizatori</h2>
     <table>
         <tr>
             <th>ID</th>
-            <th>User</th>
-            <th>Fisier</th>
-            <th>Incarcat la</th>
+            <th>Username</th>
+            <th>Actions</th>
         </tr>
-        {% for cmr in cmrs %}
+        {% for user in users %}
         <tr>
-            <td>{{ cmr.id }}</td>
-            <td>{{ cmr.user.username }}</td>
-            <td><a href="{{ cmr.file.url }}">Download</a></td>
-            <td>{{ cmr.uploaded_at }}</td>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td><a href="{% url 'myapp:user_documents' user.id %}"><button>Vezi documentele</button></a></td>
         </tr>
         {% endfor %}
     </table>
