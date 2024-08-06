@@ -16,11 +16,11 @@
         {% for document in documents %}
         <tr>
             <td>{{ document.id }}</td>
-            <td><a href="{{ document.file.url }}">Download</a></td>
+            <td><a href="{{ document.file.url }}">{{ document.file.name }}</a></td>
             <td>{{ document.uploaded_at }}</td>
         </tr>
         {% endfor %}
     </table>
-    <a href="{% url 'cmr_app:dashboard' %}" class="button">Înapoi la Panoul de control</a>
+    <a href="{% url 'cmr_app:dashboard' %}" class="button">Înapoi la Dashboard</a>
 </body>
 </html>
