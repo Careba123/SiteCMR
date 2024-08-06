@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.models import User
 from .models import CMR
 from .forms import CMRForm
 
@@ -19,7 +20,21 @@ def upload_cmr(request):
 @login_required
 def dashboard(request):
     if request.user.is_staff:
+        users = User.objects.all()
         cmrs = CMR.objects.all()
     else:
+        users = None
         cmrs = CMR.objects.filter(user=request.user)
-    return render(request, 'cmr_app/dashboard.html', {'cmrs': cmrs})
+    return render(request, 'cmr_app/dashboard.html', {'users': users, 'cmrs': cmrs})
+
+
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.models import User
+from .models import CMR
+
+@user_passes_test(lambda u: u.is_staff)
+def user_documents(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    documents = CMR.objects.filter(user=user)
+    return render(request, 'cmr_app/user_documents.html', {'user': user, 'documents': documents})

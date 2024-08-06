@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Documentele Utilizatorului</title>
+</head>
+<body>
+    <h1>Documentele încărcate de {{ user.username }}</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>File</th>
+            <th>Uploaded At</th>
+        </tr>
+        {% for document in documents %}
+        <tr>
+            <td>{{ document.id }}</td>
+            <td><a href="{{ document.file.url }}">Download</a></td>
+            <td>{{ document.uploaded_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'cmr_app:dashboard' %}">Înapoi la Dashboard</a>
+</body>
+</html>
