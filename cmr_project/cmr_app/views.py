@@ -4,9 +4,12 @@ from django.contrib.auth.models import User
 from .models import CMR
 from .forms import CMRForm
 
-@user_passes_test(lambda u: u.is_staff)
+@login_required
 def dashboard(request):
-    users = User.objects.all()
+    if request.user.is_staff:
+        users = User.objects.all()
+    else:
+        users = None
     return render(request, 'cmr_app/dashboard.html', {'users': users})
 
 @user_passes_test(lambda u: u.is_staff)

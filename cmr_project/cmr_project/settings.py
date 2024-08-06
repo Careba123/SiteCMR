@@ -81,8 +81,10 @@ DATABASES = {
     }
 }
 
-LOGIN_REDIRECT_URL = 'cmr_app:dashboard'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
+
 
 
 # Password validation
