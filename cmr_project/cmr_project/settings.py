@@ -82,8 +82,9 @@ DATABASES = {
 }
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'cmr_app:dashboard'
 LOGOUT_REDIRECT_URL = 'login'
+
 
 
 
