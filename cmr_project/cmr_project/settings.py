@@ -77,13 +77,14 @@ WSGI_APPLICATION = 'cmr_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER': 'myuser',
-        'PASSWORD': 'mypassword',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'newdatabase',  # Numele noii baze de date
+        'USER': 'cristi',  # Numele noului utilizator
+        'PASSWORD': 'Cristi12345@',  # Parola noului utilizator
+        'HOST': 'localhost',  # De obicei localhost pentru serverul local de PostgreSQL
+        'PORT': '5432',  # Portul standard pentru PostgreSQL
     }
 }
+
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'cmr_app:dashboard'
