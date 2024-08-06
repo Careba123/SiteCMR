@@ -8,9 +8,11 @@ from .forms import CMRForm
 def dashboard(request):
     if request.user.is_staff:
         users = User.objects.all()
+        cmrs = CMR.objects.all()  # Adaugat pentru a vizualiza toate documentele
     else:
         users = None
-    return render(request, 'cmr_app/dashboard.html', {'users': users})
+        cmrs = CMR.objects.filter(user=request.user)
+    return render(request, 'cmr_app/dashboard.html', {'users': users, 'cmrs': cmrs})
 
 @user_passes_test(lambda u: u.is_staff)
 def user_documents(request, user_id):

@@ -9,20 +9,31 @@
         {% csrf_token %}
         <button type="submit">Logout</button>
     </form>
-    <h2>Utilizatori</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Actions</th>
-        </tr>
-        {% for user in users %}
-        <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.username }}</td>
-            <td><a href="{% url 'cmr_app:user_documents' user.id %}"><button>Vezi documentele</button></a></td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+
+    {% if request.user.is_staff %}
+        <h2>Utilizatori</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Actions</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td><a href="{% url 'cmr_app:user_documents' user.id %}"><button>Vezi documentele</button></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Documentele Mele</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>File</th>
+                <th>Uploaded At</th>
+            </tr>
+            {% for cmr in cmrs %}
+            <tr>
+                <td>{{ cmr.id }}</
