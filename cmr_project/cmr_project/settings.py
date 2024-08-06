@@ -76,19 +76,15 @@ WSGI_APPLICATION = 'cmr_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'newdatabase',  # Numele noii baze de date
-        'USER': 'cristi',  # Numele noului utilizator
-        'PASSWORD': 'Cristi12345@',  # Parola noului utilizator
-        'HOST': 'localhost',  # De obicei localhost pentru serverul local de PostgreSQL
-        'PORT': '5432',  # Portul standard pentru PostgreSQL
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'cmr_app:dashboard'
 LOGOUT_REDIRECT_URL = 'login'
+
 
 
 
